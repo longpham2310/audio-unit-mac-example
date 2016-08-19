@@ -1,15 +1,16 @@
 //
 //  ViewController.h
-//  audio-unit-mac-example
+//  Demo
 //
-//  Created by Long Pham on 19/08/2016.
-//  Copyright © 2016 Long Pham. All rights reserved.
+//  Created by Long Pham on 04/08/2016.
+//  Copyright © 2016 Tagher. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
+@class MacAudioController;
 @interface ViewController : NSViewController
 
-
+@property (nonatomic, strong) MacAudioController * audioController;
 @end
 

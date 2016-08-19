@@ -12,6 +12,7 @@
 		636F70FC1D66EFED00D51234 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636F70FB1D66EFED00D51234 /* ViewController.m */; };
 		636F70FE1D66EFED00D51234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F70FD1D66EFED00D51234 /* Assets.xcassets */; };
 		636F71011D66EFED00D51234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F70FF1D66EFED00D51234 /* Main.storyboard */; };
+		636F710A1D66F02A00D51234 /* MacAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636F71091D66F02A00D51234 /* MacAudioController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		636F70FD1D66EFED00D51234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636F71001D66EFED00D51234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		636F71021D66EFED00D51234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636F71081D66F02A00D51234 /* MacAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacAudioController.h; sourceTree = "<group>"; };
+		636F71091D66F02A00D51234 /* MacAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacAudioController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,8 @@
 		636F70F31D66EFED00D51234 /* audio-unit-mac-example */ = {
 			isa = PBXGroup;
 			children = (
+				636F71081D66F02A00D51234 /* MacAudioController.h */,
+				636F71091D66F02A00D51234 /* MacAudioController.m */,
 				636F70F41D66EFED00D51234 /* AppDelegate.h */,
 				636F70F51D66EFED00D51234 /* AppDelegate.m */,
 				636F70FA1D66EFED00D51234 /* ViewController.h */,
@@ -147,6 +152,7 @@
 			files = (
 				636F70FC1D66EFED00D51234 /* ViewController.m in Sources */,
 				636F70F91D66EFED00D51234 /* main.m in Sources */,
+				636F710A1D66F02A00D51234 /* MacAudioController.m in Sources */,
 				636F70F61D66EFED00D51234 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
