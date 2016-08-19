@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		636F70F61D66EFED00D51234 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 636F70F51D66EFED00D51234 /* AppDelegate.m */; };
+		636F70F91D66EFED00D51234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 636F70F81D66EFED00D51234 /* main.m */; };
+		636F70FC1D66EFED00D51234 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636F70FB1D66EFED00D51234 /* ViewController.m */; };
+		636F70FE1D66EFED00D51234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F70FD1D66EFED00D51234 /* Assets.xcassets */; };
+		636F71011D66EFED00D51234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F70FF1D66EFED00D51234 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		636F70F11D66EFED00D51234 /* audio-unit-mac-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "audio-unit-mac-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636F70F41D66EFED00D51234 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		636F70F51D66EFED00D51234 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		636F70F81D66EFED00D51234 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		636F70FA1D66EFED00D51234 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		636F70FB1D66EFED00D51234 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		636F70FD1D66EFED00D51234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		636F71001D66EFED00D51234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		636F71021D66EFED00D51234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		636F70EE1D66EFED00D51234 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		636F70E81D66EFED00D51234 = {
+			isa = PBXGroup;
+			children = (
+				636F70F31D66EFED00D51234 /* audio-unit-mac-example */,
+				636F70F21D66EFED00D51234 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		636F70F21D66EFED00D51234 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				636F70F11D66EFED00D51234 /* audio-unit-mac-example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		636F70F31D66EFED00D51234 /* audio-unit-mac-example */ = {
+			isa = PBXGroup;
+			children = (
+				636F70F41D66EFED00D51234 /* AppDelegate.h */,
+				636F70F51D66EFED00D51234 /* AppDelegate.m */,
+				636F70FA1D66EFED00D51234 /* ViewController.h */,
+				636F70FB1D66EFED00D51234 /* ViewController.m */,
+				636F70FD1D66EFED00D51234 /* Assets.xcassets */,
+				636F70FF1D66EFED00D51234 /* Main.storyboard */,
+				636F71021D66EFED00D51234 /* Info.plist */,
+				636F70F71D66EFED00D51234 /* Supporting Files */,
+			);
+			path = "audio-unit-mac-example";
+			sourceTree = "<group>";
+		};
+		636F70F71D66EFED00D51234 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				636F70F81D66EFED00D51234 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		636F70F01D66EFED00D51234 /* audio-unit-mac-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 636F71051D66EFED00D51234 /* Build configuration list for PBXNativeTarget "audio-unit-mac-example" */;
+			buildPhases = (
+				636F70ED1D66EFED00D51234 /* Sources */,
+				636F70EE1D66EFED00D51234 /* Frameworks */,
+				636F70EF1D66EFED00D51234 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "audio-unit-mac-example";
+			productName = "audio-unit-mac-example";
+			productReference = 636F70F11D66EFED00D51234 /* audio-unit-mac-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		636F70E91D66EFED00D51234 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Long Pham";
+				TargetAttributes = {
+					636F70F01D66EFED00D51234 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 636F70EC1D66EFED00D51234 /* Build configuration list for PBXProject "audio-unit-mac-example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 636F70E81D66EFED00D51234;
+			productRefGroup = 636F70F21D66EFED00D51234 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				636F70F01D66EFED00D51234 /* audio-unit-mac-example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		636F70EF1D66EFED00D51234 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F70FE1D66EFED00D51234 /* Assets.xcassets in Resources */,
+				636F71011D66EFED00D51234 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		636F70ED1D66EFED00D51234 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F70FC1D66EFED00D51234 /* ViewController.m in Sources */,
+				636F70F91D66EFED00D51234 /* main.m in Sources */,
+				636F70F61D66EFED00D51234 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		636F70FF1D66EFED00D51234 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636F71001D66EFED00D51234 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		636F71031D66EFED00D51234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		636F71041D66EFED00D51234 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		636F71061D66EFED00D51234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "audio-unit-mac-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "longpham.audio-unit-mac-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		636F71071D66EFED00D51234 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "audio-unit-mac-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "longpham.audio-unit-mac-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		636F70EC1D66EFED00D51234 /* Build configuration list for PBXProject "audio-unit-mac-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F71031D66EFED00D51234 /* Debug */,
+				636F71041D66EFED00D51234 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		636F71051D66EFED00D51234 /* Build configuration list for PBXNativeTarget "audio-unit-mac-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F71061D66EFED00D51234 /* Debug */,
+				636F71071D66EFED00D51234 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 636F70E91D66EFED00D51234 /* Project object */;
+}
