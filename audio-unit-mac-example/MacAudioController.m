@@ -186,7 +186,7 @@ static OSStatus playbackCallback(void *inRefCon,
     AudioComponent comp;
     
     desc.componentType = kAudioUnitType_Output;
-    desc.componentSubType = kAudioUnitSubType_VoiceProcessingIO;
+    desc.componentSubType = kAudioUnitSubType_HALOutput;//kAudioUnitSubType_VoiceProcessingIO;
     
     desc.componentManufacturer = kAudioUnitManufacturer_Apple;
     desc.componentFlags = 0;
@@ -262,15 +262,15 @@ static OSStatus playbackCallback(void *inRefCon,
 }
 
 - (OSStatus)setupInputFormat {
-    AudioStreamBasicDescription audioFormat;// = [EZAudioUtilities monoFloatFormatWithSampleRate:SampleRate]
+    AudioStreamBasicDescription audioFormat;
     audioFormat.mSampleRate			= SampleRate;
     audioFormat.mFormatID			= kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags		=  kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+    audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
     audioFormat.mFramesPerPacket	= 1;
-    audioFormat.mChannelsPerFrame	= 1;
-    audioFormat.mBitsPerChannel		= 8 * sizeof(UInt32);
-    audioFormat.mBytesPerPacket		= sizeof(UInt32);
-    audioFormat.mBytesPerFrame		= sizeof(UInt32);
+    audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
+    audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
+    audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
+    audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
     
     UInt32 size = sizeof(AudioStreamBasicDescription);
     
