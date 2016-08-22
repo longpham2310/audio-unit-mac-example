@@ -43,6 +43,8 @@ void checkStatus(int status){
 //    return str;
 //}
 
+ExtAudioFileRef destAudioFile;
+
 /**
  This callback is called when new audio data from the microphone is
  available.
@@ -70,19 +72,6 @@ static OSStatus recordingCallback(void *inRefCon,
     AudioBufferList bufferList;
     bufferList.mNumberBuffers = 1;
     bufferList.mBuffers[0] = buffer;
-    
-    // Then:
-    // Obtain recorded samples
-//    AudioStreamBasicDescription audioFormat;
-//    audioFormat.mSampleRate			= SampleRate;
-//    audioFormat.mFormatID			= kAudioFormatLinearPCM;
-//    audioFormat.mFormatFlags		=  kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-//    audioFormat.mFramesPerPacket	= 1;
-//    audioFormat.mChannelsPerFrame	= 1;
-//    audioFormat.mBitsPerChannel		= 8 * sizeof(UInt32);
-//    audioFormat.mBytesPerPacket		= sizeof(UInt32);
-//    audioFormat.mBytesPerFrame		= sizeof(UInt32);
-
     
     OSStatus err = AudioUnitRender([macOsAudio audioUnit],
                              ioActionFlags,
@@ -141,6 +130,30 @@ static OSStatus playbackCallback(void *inRefCon,
 //         }
         
     }
+    
+#pragma mark - Write buffer to file
+    AudioStreamBasicDescription audioFormat;
+    audioFormat.mSampleRate			= SampleRate;
+    audioFormat.mFormatID			= kAudioFormatLinearPCM;
+    audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+    audioFormat.mFramesPerPacket	= 1;
+    audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
+    audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
+    audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
+    audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
+    
+    CFStringRef fPath;
+    fPath = CFStringCreateWithCString(kCFAllocatorDefault,
+                                      "Test",
+                                      kCFStringEncodingMacRoman);
+    
+    NSURL * destURL = [NSURL fileURLWithPath:(__bridge NSString * _Nonnull)(fPath)];
+    
+    ExtAudioFileCreateWithURL( (__bridge CFURLRef)destURL, kAudioFileAIFFType, &audioFormat, NULL, kAudioFileFlags_EraseFile, &destAudioFile );
+    
+    ExtAudioFileWriteAsync(destAudioFile,
+                           inNumberFrames,
+                           ioData);
     
     return noErr;
 }
