@@ -132,24 +132,26 @@ static OSStatus playbackCallback(void *inRefCon,
     }
     
 #pragma mark - Write buffer to file
-    AudioStreamBasicDescription audioFormat;
-    audioFormat.mSampleRate			= SampleRate;
-    audioFormat.mFormatID			= kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-    audioFormat.mFramesPerPacket	= 1;
-    audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
-    audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
-    audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
-    audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
-    
-    CFStringRef fPath;
-    fPath = CFStringCreateWithCString(kCFAllocatorDefault,
-                                      "Test",
-                                      kCFStringEncodingMacRoman);
-    
-    NSURL * destURL = [NSURL fileURLWithPath:(__bridge NSString * _Nonnull)(fPath)];
-    
-    ExtAudioFileCreateWithURL( (__bridge CFURLRef)destURL, kAudioFileAIFFType, &audioFormat, NULL, kAudioFileFlags_EraseFile, &destAudioFile );
+    if (!destAudioFile) {
+        AudioStreamBasicDescription audioFormat;
+        audioFormat.mSampleRate			= SampleRate;
+        audioFormat.mFormatID			= kAudioFormatLinearPCM;
+        audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+        audioFormat.mFramesPerPacket	= 1;
+        audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
+        audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
+        audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
+        audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
+        
+        CFStringRef fPath;
+        fPath = CFStringCreateWithCString(kCFAllocatorDefault,
+                                          "Test",
+                                          kCFStringEncodingMacRoman);
+        
+        NSURL * destURL = [NSURL fileURLWithPath:(__bridge NSString * _Nonnull)(fPath)];
+        
+        ExtAudioFileCreateWithURL( (__bridge CFURLRef)destURL, kAudioFileAIFFType, &audioFormat, NULL, kAudioFileFlags_EraseFile, &destAudioFile );
+    }
     
     ExtAudioFileWriteAsync(destAudioFile,
                            inNumberFrames,
@@ -384,6 +386,10 @@ static OSStatus playbackCallback(void *inRefCon,
 - (void) stop {
     OSStatus status = AudioOutputUnitStop(audioUnit);
     checkStatus(status);
+    
+    // Stop write to file
+    ExtAudioFileDispose(destAudioFile);
+    destAudioFile = NULL;
 }
 
 -(BOOL)microphoneInput:(BOOL)enable;
