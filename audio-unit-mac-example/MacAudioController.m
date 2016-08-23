@@ -66,9 +66,9 @@ static OSStatus recordingCallback(void *inRefCon,
     AudioBuffer buffer;
     
     buffer.mNumberChannels = 1;
-    buffer.mDataByteSize = inNumberFrames * sizeof(uint16);
+    buffer.mDataByteSize = inNumberFrames * sizeof(UInt16);
     buffer.mData = malloc( inNumberFrames * sizeof(UInt16));
-    
+    memset(buffer.mData,0,sizeof(UInt16)*inNumberFrames);
     // Put buffer in a AudioBufferList
     AudioBufferList bufferList;
     bufferList.mNumberBuffers = 1;
@@ -453,11 +453,14 @@ static OSStatus playbackCallback(void *inRefCon,
 {
     AudioBuffer buffer = audioBufferList->mBuffers[0];
     NSData *d = [NSData dataWithBytes:buffer.mData length:buffer.mDataByteSize];
+    int sum=0;
     self.tempData = d;
     NSLog(@"Datasize of buffer: %ld",d.length);
-//    for (int i = 0; i < buffer.mDataByteSize; i++) {
-//        NSLog(@"%d",((UInt32*)buffer.mData)[i]);
-//    }
+    for (int i = 0; i < buffer.mDataByteSize; i=i+2) {
+        NSLog(@"%d",(CFSwapInt16BigToHost(((short*)buffer.mData)[i])));
+        sum=sum+abs(CFSwapInt16BigToHost(((short*)buffer.mData)[i]));
+    }
+    NSLog(@"Volume: %d",sum);
     return d;
     
 //    return data;
