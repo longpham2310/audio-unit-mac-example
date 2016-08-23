@@ -12,6 +12,7 @@
 #define kOutputBus 0
 #define kInputBus 1
 #define SampleRate 44100
+#define numberOfChannel 1  // 1 is mono: 2 is stereo
 
 @interface MacAudioController ()
 
@@ -65,8 +66,8 @@ static OSStatus recordingCallback(void *inRefCon,
     AudioBuffer buffer;
     
     buffer.mNumberChannels = 1;
-    buffer.mDataByteSize = inNumberFrames * sizeof(UInt32);
-    buffer.mData = malloc( inNumberFrames * sizeof(UInt32));
+    buffer.mDataByteSize = inNumberFrames * sizeof(uint16);
+    buffer.mData = malloc( inNumberFrames * sizeof(UInt16));
     
     // Put buffer in a AudioBufferList
     AudioBufferList bufferList;
@@ -87,6 +88,32 @@ static OSStatus recordingCallback(void *inRefCon,
     //Test
     [macOsAudio convertAudioBufferListToData:&bufferList];
 //    [macOsAudio processAudio:&bufferList];
+    
+    // WRITE THE DATA TO FILE
+    if (!destAudioFile) {
+        AudioStreamBasicDescription audioFormat;
+        audioFormat.mSampleRate			= SampleRate;
+        audioFormat.mFormatID			= kAudioFormatLinearPCM;
+        audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+        audioFormat.mFramesPerPacket	= 1;
+        audioFormat.mChannelsPerFrame	= numberOfChannel;
+        audioFormat.mBitsPerChannel		= 8 * sizeof(UInt16);
+        audioFormat.mBytesPerPacket		= sizeof(UInt16);
+        audioFormat.mBytesPerFrame		= sizeof(UInt16);
+        
+        CFStringRef fPath;
+        fPath = CFStringCreateWithCString(kCFAllocatorDefault,
+                                          "Record.aiff",
+                                          NSUTF8StringEncoding);
+        
+        NSURL * destURL = [NSURL fileURLWithPath:(__bridge NSString * _Nonnull)(fPath)];
+        
+        ExtAudioFileCreateWithURL( (__bridge CFURLRef)destURL, kAudioFileAIFFType, &audioFormat, NULL, kAudioFileFlags_EraseFile, &destAudioFile );
+    }
+    
+    ExtAudioFileWriteAsync(destAudioFile,
+                           inNumberFrames,
+                           &bufferList);
     
     // release the malloc'ed data in the buffer we created earlier
     free(bufferList.mBuffers[0].mData);
@@ -130,32 +157,6 @@ static OSStatus playbackCallback(void *inRefCon,
 //         }
         
     }
-    
-#pragma mark - Write buffer to file
-    if (!destAudioFile) {
-        AudioStreamBasicDescription audioFormat;
-        audioFormat.mSampleRate			= SampleRate;
-        audioFormat.mFormatID			= kAudioFormatLinearPCM;
-        audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-        audioFormat.mFramesPerPacket	= 1;
-        audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
-        audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
-        audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
-        audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
-        
-        CFStringRef fPath;
-        fPath = CFStringCreateWithCString(kCFAllocatorDefault,
-                                          "Test",
-                                          kCFStringEncodingMacRoman);
-        
-        NSURL * destURL = [NSURL fileURLWithPath:(__bridge NSString * _Nonnull)(fPath)];
-        
-        ExtAudioFileCreateWithURL( (__bridge CFURLRef)destURL, kAudioFileAIFFType, &audioFormat, NULL, kAudioFileFlags_EraseFile, &destAudioFile );
-    }
-    
-    ExtAudioFileWriteAsync(destAudioFile,
-                           inNumberFrames,
-                           ioData);
     
     return noErr;
 }
@@ -282,10 +283,10 @@ static OSStatus playbackCallback(void *inRefCon,
     audioFormat.mFormatID			= kAudioFormatLinearPCM;
     audioFormat.mFormatFlags        = kAudioFormatFlagIsBigEndian | kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
     audioFormat.mFramesPerPacket	= 1;
-    audioFormat.mChannelsPerFrame	= 2; // 1 is mono: 2 is stereo
-    audioFormat.mBitsPerChannel		= 16;//8 * sizeof(UInt32);
-    audioFormat.mBytesPerPacket		= 4;//sizeof(UInt32);
-    audioFormat.mBytesPerFrame		= 4;//sizeof(UInt32);
+    audioFormat.mChannelsPerFrame	= numberOfChannel;
+    audioFormat.mBitsPerChannel		= 8 * sizeof(UInt16);
+    audioFormat.mBytesPerPacket		= sizeof(UInt16);
+    audioFormat.mBytesPerFrame		= sizeof(UInt16);
     
     UInt32 size = sizeof(AudioStreamBasicDescription);
     
@@ -453,9 +454,10 @@ static OSStatus playbackCallback(void *inRefCon,
     AudioBuffer buffer = audioBufferList->mBuffers[0];
     NSData *d = [NSData dataWithBytes:buffer.mData length:buffer.mDataByteSize];
     self.tempData = d;
-    for (int i = 0; i < buffer.mDataByteSize; i++) {
-        NSLog(@"%d",((UInt32*)buffer.mData)[i]);
-    }
+    NSLog(@"Datasize of buffer: %ld",d.length);
+//    for (int i = 0; i < buffer.mDataByteSize; i++) {
+//        NSLog(@"%d",((UInt32*)buffer.mData)[i]);
+//    }
     return d;
     
 //    return data;
